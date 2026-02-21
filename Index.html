@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FleetFlow - Fleet Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>FleetFlow</h1>
+            <p class="subtitle">Fleet Management System</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" data-section="vehicles">Vehicles</button>
+            <button class="nav-btn" data-section="trips">Trips</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Vehicles Section -->
+            <section id="vehicles-section" class="section active">
+                <!-- Add Vehicle Form -->
+                <div class="card">
+                    <h2>Add New Vehicle</h2>
+                    <form id="add-vehicle-form" class="form">
+                        <div class="form-group">
+                            <label for="vehicle-name">Vehicle Name:</label>
+                            <input 
+                                type="text" 
+                                id="vehicle-name" 
+                                placeholder="e.g., Truck-001" 
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle-capacity">Capacity (kg):</label>
+                            <input 
+                                type="number" 
+                                id="vehicle-capacity" 
+                                placeholder="e.g., 5000" 
+                                min="1" 
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Vehicle</button>
+                    </form>
+                    <div id="vehicle-message" class="message"></div>
+                </div>
+
+                <!-- Vehicles Table -->
+                <div class="card">
+                    <h2>All Vehicles</h2>
+                    <div class="table-wrapper">
+                        <table id="vehicles-table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Vehicle Name</th>
+                                    <th>Capacity (kg)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehicles-tbody">
+                                <tr>
+                                    <td colspan="3" class="text-center">Loading vehicles...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trips Section -->
+            <section id="trips-section" class="section">
+                <!-- Create Trip Form -->
+                <div class="card">
+                    <h2>Create New Trip</h2>
+                    <form id="add-trip-form" class="form">
+                        <div class="form-group">
+                            <label for="trip-vehicle">Select Vehicle:</label>
+                            <select id="trip-vehicle" required>
+                                <option value="">-- Choose a vehicle --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="trip-weight">Cargo Weight (kg):</label>
+                            <input 
+                                type="number" 
+                                id="trip-weight" 
+                                placeholder="e.g., 2000" 
+                                min="1" 
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Trip</button>
+                    </form>
+                    <div id="trip-message" class="message"></div>
+                </div>
+
+                <!-- Trips Table -->
+                <div class="card">
+                    <h2>All Trips</h2>
+                    <div class="table-wrapper">
+                        <table id="trips-table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Trip ID</th>
+                                    <th>Vehicle ID</th>
+                                    <th>Cargo Weight (kg)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trips-tbody">
+                                <tr>
+                                    <td colspan="4" class="text-center">Loading trips...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 FleetFlow. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>
